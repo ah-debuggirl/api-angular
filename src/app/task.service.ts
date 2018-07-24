@@ -25,4 +25,8 @@ export class TaskService {
     return this.http.get<Task[]>(this.taskUrl)
     .pipe(map(data => data));
   }
+
+  createTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.taskUrl, task, HTTP_OPTIONS);
+  }
 }

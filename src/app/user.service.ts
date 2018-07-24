@@ -24,4 +24,10 @@ export class UserService {
     return this.http.get<User[]>(this.usersUrl)
     .pipe(map(data => data));
   }
+
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(this.usersUrl, user, HTTP_OPTIONS);
+  }
+
+
 }

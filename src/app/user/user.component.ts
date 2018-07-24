@@ -9,6 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  public newUser: User = new User();
   users: User[];
 
   constructor(private userService: UserService) { }
@@ -20,6 +21,14 @@ export class UserComponent implements OnInit {
   getUsers(): void {
     this.userService.getUsers()
     .subscribe(users => this.users = users);
+  }
+
+  createUser(): void {
+    this.userService.createUser(this.newUser)
+    .subscribe(user => {
+      this.users.push(user);
+      this.newUser = new User();
+    });
   }
 
 }
