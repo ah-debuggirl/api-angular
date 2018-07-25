@@ -1,5 +1,5 @@
 <h1>Users</h1>
-<ul>
+<ul class="users">
   <li *ngFor="let user of users">
     <p>{{user._id}}</p>
     <p>{{user.userName}}</p>
@@ -9,18 +9,22 @@
 </ul>
 
 <form>
+
   <div class="form-row">
-    <div class="col-md-5">
-      <input type="text" name="username" id="username" [(ngModel)]="newUser.username" placeholder="Username" class="form-control">
-    </div>
-    <div class="col-md-5">
-      <input type="text" name="firstName" id="firstName" [(ngModel)]="newUser.firstName" placeholder="First Name" class="form-control">
-    </div>
-    <div class="col-md-5">
-      <input type="text" name="lastName" id="lastName" [(ngModel)]="newUser.lastName" placeholder="Last Name" class="form-control">
-    </div>
-    <div class="col-md-2">
-      <button type="submit" class="btn btn-primary" (click)="createUser()">Crear</button>
-    </div>
+
+      <div class="col-md-5">
+          <input type="text" name="userName" id="userName" [(ngModel)]="newUser.userName" placeholder="User Name" class="form-control">
+        </div>
+        <div class="col-md-5">
+          <input type="text" name="firstName" id="firstName" [(ngModel)]="newUser.firstName" placeholder="First Name" class="form-control">
+        </div>
+        <div class="col-md-5">
+          <input type="text" name="lastName" id="lastName" [(ngModel)]="newUser.lastName" placeholder="Last Name" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary" (click)="createUser()">Crear</button>
+        </div>
+
   </div>
+
 </form>

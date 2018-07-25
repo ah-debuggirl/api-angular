@@ -1,4 +1,5 @@
 
+import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -27,6 +28,11 @@ export class UserService {
 
   createUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl, user, HTTP_OPTIONS);
+  }
+
+  getUser(id: String): Observable<User> {
+    const URL = `${this.usersUrl}/${id}`;
+    return this.http.get<User>(URL);
   }
 
 
