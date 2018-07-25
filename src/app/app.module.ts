@@ -14,6 +14,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { UserService } from './user.service';
 import { TaskService } from './task.service';
 import { AppRoutingModule } from './/app-routing.module';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './/app-routing.module';
     UserComponent,
     UserDetailComponent,
     TaskComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
