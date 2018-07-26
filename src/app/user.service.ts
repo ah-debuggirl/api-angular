@@ -8,10 +8,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { User } from './user';
 
-
-const HTTP_OPTIONS = {
-  headers: new HttpHeaders({ 'Content-Type': 'aplication/json'})
-}
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class UserService {
@@ -21,19 +20,31 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  ngOnInit() {
+    this.getUsers();
+  }
+
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl)
     .pipe(map(data => data));
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.usersUrl, user, HTTP_OPTIONS);
+    return this.http.post<User>(this.usersUrl, user, httpOptions);
   }
 
   getUser(id: String): Observable<User> {
-    const URL = `${this.usersUrl}/${id}`;
-    return this.http.get<User>(URL);
+    const url = `${this.usersUrl}/${id}`;
+    return this.http.get<User>(url);
+}
+
+  updateUser(id: String, user: User): Observable<any> {
+    const url = `${this.usersUrl}/${id}`;
+    return this.http.put(url, user, httpOptions);
+}
+
+  deleteUser (id: String): Observable<User> {
+    const url = `${this.usersUrl}/${id}`;
+    return this.http.delete<User>(url, httpOptions);
   }
-
-
 }
