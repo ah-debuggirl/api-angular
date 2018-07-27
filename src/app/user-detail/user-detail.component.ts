@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  user: User;
+  users: User;
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 
@@ -21,7 +21,7 @@ export class UserDetailComponent implements OnInit {
   getUser() {
     const ID = this.route.snapshot.paramMap.get('id');
     this.userService.getUser(ID)
-    .subscribe(user => this.user = user);
+    .subscribe(users => this.users = users);
   }
 
 }

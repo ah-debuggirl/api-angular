@@ -10,8 +10,8 @@ import { User } from './user';
 
 
 const HTTP_OPTIONS = {
-  headers: new HttpHeaders({ 'Content-Type': 'aplication/json'})
-}
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+};
 
 @Injectable()
 export class UserService {
@@ -20,6 +20,10 @@ export class UserService {
   usersUrl = `${this.apiUrl}/users`;
 
   constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.getUsers();
+  }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl)
